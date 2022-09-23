@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <title>Buscador gif</title>
+    <link rel="stylesheet" href="css/gif.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="gif_form_container column" style="margin-top: 10%">
+                <h1>Buscador Gif</h1>
+                <form id="gif_form">
+                    <input  type="text" id="gif_search" name="gif_search" placeholder="Buscar..." /> 
+                    <button type="submit" class="button-primary" > Buscar </button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div id="gif_recent_container" class="column">
+                <h5>busquedas recientes</h5>
+                <ul id="gif_recent_list">
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div id="gif_img_container" class="column">
+            </div>
+        </div>
+    </div>
+    <script type="module" src="js/gif.js"></script>
+</body>
+
+
+</html>
