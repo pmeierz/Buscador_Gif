@@ -7,25 +7,25 @@ const makeImage = (element) => {
     return img;
 }
 
-const updateLocalStorage = ( ListNode ) => {
+const updateLocalStorageHistory = ( ListNode ) => {
 
-    let arrayPersist = [];
+    let arrayhistory = [];
 
     for (let item of ListNode.children) {
-        arrayPersist.push(item.firstChild.value);
+        arrayhistory.push(item.firstChild.innerText);
     }
 
     // Actualizar el localStorage del navegador
-    window.localStorage.setItem('recentSearches', arrayPersist);
+    window.localStorage.setItem('history', arrayhistory);
 
 }
 
-const updateRecentSearches = ( newSearch ) => {
+const updatehistory = ( newSearch ) => {
 
-    let recentSearchesList = document.getElementById('gif_recent_list');
+    let historyList = document.getElementById('gif_recent_list');
 
-    if ( recentSearchesList.lastElementChild && Object.values(recentSearchesList.children).length === 3 ) 
-        recentSearchesList.removeChild(recentSearchesList.lastElementChild);
+    if ( historyList.lastElementChild && Object.values(historyList.children).length === 3 ) 
+        historyList.removeChild(historyList.lastElementChild);
     
     let newElemNode = document.createElement('li');
     let linkElemNode = document.createElement('a');
@@ -35,9 +35,9 @@ const updateRecentSearches = ( newSearch ) => {
 
     newElemNode.appendChild(linkElemNode);
 
-    recentSearchesList.insertBefore(newElemNode, recentSearchesList.firstChild);
+    historyList.insertBefore(newElemNode, historyList.firstChild);
 
-    updateLocalStorage(recentSearchesList);
+    updateLocalStorageHistory(historyList);
 
 }
 
@@ -51,13 +51,13 @@ window.addEventListener("load", () => {
             elemContainer.append(...arrImg);
         });
 
-    let recentSearches = window.localStorage.getItem('recentSearches');
+    let history = window.localStorage.getItem('history');
 
-    if ( recentSearches ) {
+    if ( history ) {
 
-        let arrRecentSeraches = recentSearches.split(',');
+        let arrRecentSeraches = history.split(',');
 
-        let recentSearchesList = document.getElementById('gif_recent_list');
+        let historyList = document.getElementById('gif_recent_list');
 
         let arrNodeLi = arrRecentSeraches.map((value) => {
 
@@ -73,7 +73,7 @@ window.addEventListener("load", () => {
 
         });
 
-        recentSearchesList.append(...arrNodeLi);
+        historyList.append(...arrNodeLi);
 
     }  
 
@@ -93,7 +93,7 @@ window.addEventListener("load", () => {
                     elemContainer.append(...arrImg);
                 }
             }).finally(() => {
-                updateRecentSearches(val_search);
+                updatehistory(val_search);
             });
 
     });
